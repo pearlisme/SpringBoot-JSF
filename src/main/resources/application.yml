@@ -1,0 +1,58 @@
+spring:
+  profiles:
+    active: development
+
+
+---
+spring:
+  profiles: development
+  h2:
+    console:
+      enabled: true
+      path: /h2
+      settings:
+        trace: true
+        web-allow-others: true
+
+  datasource:
+    name: sa
+    password:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:file:~/otf
+
+# Liquibase
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.sql
+    enabled: false
+    url: jdbc:h2:mem:otf
+    user: sa
+    password:
+  output:
+    ansi:
+      enabled: detect
+  main:
+    banner-mode: console
+
+
+
+server:
+  port: 9090
+
+#logger
+logging:
+  level:
+    root: error
+    org.springframework: info
+    org.hibernate: error
+    com.pearl.boot: info
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
+    file: "%d %-5level [%thread] %logger : %msg%n"
+  file: /logs/application.log
+
+
+
+---
+
+spring:
+  profiles: test

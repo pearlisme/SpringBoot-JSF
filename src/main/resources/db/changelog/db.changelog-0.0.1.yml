@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+     id: 1
+     author: pearl
+     changes:
+      - createTable:
+          tableName: EMPLOYEE
+          columns:
+            - column:
+                name: ID
+                type: INT
+                autoIncrement: true
+                constraints:
+                  primaryKey: true
+                  nullable: false
+            - column:
+                name: NAME
+                type: VARCHAR2(55)
+                constraints:
+                  nullable: false
+            - column:
+                name: NAME
+                type: VARCHAR2(55)
+                constraints:
+                nullable: true
+            - column:
+                name: SALARY
+                type: NUMBER(12,2)
+                constraints:
+                  nullable: false
